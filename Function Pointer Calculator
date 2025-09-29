@@ -1,0 +1,28 @@
+#include <stdio.h>
+int add(int a,int b){ return a+b; }
+int sub(int a,int b){ return a-b; }
+int mul(int a,int b){ return a*b; }
+int divi(int a,int b){ return b? a/b:0; }
+int main() {
+    int x, y, c;
+    int (*fp)(int,int);
+
+    while(1) {
+        printf("\n--- Function Pointer Calculator ---\n");
+        printf("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &c);
+
+        if(c==5) {
+            printf("Exiting calculator...\n");
+            break;
+        }
+
+        printf("Enter two numbers: ");
+        scanf("%d %d", &x, &y);
+
+        fp = (c==1)? add : (c==2)? sub : (c==3)? mul : divi;
+        printf("Result = %d\n", fp(x,y));
+    }
+    return 0;
+}
